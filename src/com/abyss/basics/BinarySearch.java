@@ -43,6 +43,15 @@ public class BinarySearch {
         System.out.println(s1);
         System.out.println(s1.length());
         System.out.println(Integer.toBinaryString(-1));
+        double d = 89834080384303084300.12122121212121212121212121233332323234424343434433434333d;
+        System.out.println(Double.toString(d));
+
+        System.out.println(2.0e-6 * 100000000.1);
+
+        System.out.println(true && false || true && true);
+        System.out.println((1+2.236) / 2);
+        System.out.println(1+2+3+4.0);
+        System.out.println(1 + 2 + "3");
 
     }
 }
