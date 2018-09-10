@@ -62,7 +62,7 @@ public class FirstExercise {
         return s.toString();
     }
 
-    private static void printArr(Boolean[][] b){
+    private static void printArr(boolean[][] b){
         System.out.print("\t");
         for (int i = 1; i <= b[0].length; i++) {
             System.out.print(i + "\t");
@@ -172,7 +172,8 @@ public class FirstExercise {
 //        int[] arr = {1,4,5,6,8,0,2,11,43,23};
 //        Arrays.sort(arr);
 //        System.out.println(binarySearch(0, 10, arr, 43, 0));
-        System.out.println(euclid(1111111, 1234567));
+//        System.out.println(euclid(1111111, 1234567));
+        printArr(euclidArr(6, 7));
     }
 
     private static int mystery(int a, int b) {
@@ -233,6 +234,16 @@ public class FirstExercise {
         }
         int r = a % b;
         return euclid(b, r);
+    }
+
+    private static boolean[][] euclidArr(int x, int y) {
+        boolean[][] booleans = new boolean[x][y];
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                booleans[i][j] = euclid(i + 1, j + 1) == 1;
+            }
+        }
+        return booleans;
     }
 
 
