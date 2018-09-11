@@ -1,4 +1,4 @@
-package com.abyss.basics;
+package com.abyss.basics.programingModel;
 
 import java.util.Scanner;
 
