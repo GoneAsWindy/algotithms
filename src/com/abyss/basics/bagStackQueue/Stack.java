@@ -44,6 +44,13 @@ public class Stack<T> implements Iterable<T> {
         return oldFirst.t;
     }
 
+    public T peek(){
+        if (first == null) {
+            return null;
+        }
+        return first.t;
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
