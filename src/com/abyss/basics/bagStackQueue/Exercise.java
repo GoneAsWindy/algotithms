@@ -74,18 +74,69 @@ public class Exercise {
                 String valleft  = stack.pop();
                 String temp1 = "("+valleft+ops.pop()+valright+")";
                 stack.push(temp1);
-            }else if("+*-%".indexOf(temp)!=-1){
+            }else if("+*-%".contains(temp)){
                 ops.push(temp);
             }else{
                 stack.push(temp);
             }
         }
-        Iterator<String> res = stack.iterator();
-        while(res.hasNext()){
-            System.out.print(res.next());
+        for (String aStack : stack) {
+            System.out.print(aStack);
         }
-
     }
+
+    private String infixToPostfix(String infix) {
+        Stack<String> nums = new Stack<>();
+        Stack<String> operators = new Stack<>();
+        infix = infix.replaceAll("\\(", "");
+        for (int i = 0; i < infix.length(); i++) {
+            String s = String.valueOf(infix.charAt(i));
+            if ("+-*/".contains(s)) {
+                operators.push(s);
+            } else if (s.equals(")")) {
+                String right = nums.pop();
+                String left = nums.pop();
+                String operator = operators.pop();
+                nums.push(left + right + operator);
+            } else {
+                nums.push(s);
+            }
+        }
+        return nums.pop();
+    }
+
+    @Test
+    public void testInfixTOPostfix(){
+        System.out.println(infixToPostfix("((1+2)*((3-4)*(5-6)))"));
+    }
+
+    private int evaluatePostfix(String postfix){
+        Stack<Integer> eva = new Stack<>();
+        for (int i = 0; i < postfix.length(); i++) {
+            String s = String.valueOf(postfix.charAt(i));
+            if ("+-*/".contains(s)) {
+                Integer right = eva.pop();
+                Integer left = eva.pop();
+                if ("+".equals(s))
+                    eva.push(left + right);
+                else if ("-".equals(s))
+                    eva.push(left - right);
+                else if ("*".equals(s))
+                    eva.push(left * right);
+                else
+                    eva.push(left / right);
+            } else {
+                eva.push(Integer.valueOf(s));
+            }
+        }
+        return eva.pop();
+    }
+
+    @Test
+    public void  testEvaluatePostfix(){
+        System.out.println(evaluatePostfix("12+34-56-**"));
+    }
+
 
 
 }

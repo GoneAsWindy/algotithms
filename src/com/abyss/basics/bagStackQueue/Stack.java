@@ -51,6 +51,18 @@ public class Stack<T> implements Iterable<T> {
         return first.t;
     }
 
+    public static Stack<String> copy(Stack<String> stack){
+        Stack<String> tmp = new Stack<>();
+        for (String s : stack) {
+            tmp.push(s);
+        }
+        Stack<String> rst = new Stack<>();
+        for (String s : tmp) {
+            rst.push(s);
+        }
+        return rst;
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
